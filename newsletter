@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paquete de Patrocinios - Smart Welfare News</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #3b7adf 0%, #00bf63 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 40px rgba(59, 122, 223, 0.3);
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.4rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid #3b7adf;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .stat-card:nth-child(even) {
+            border-top-color: #00bf63;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #3b7adf;
+            margin-bottom: 10px;
+        }
+        
+        .stat-card:nth-child(even) .stat-number {
+            color: #00bf63;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            color: #666;
+            font-weight: 500;
+        }
+        
+        .section {
+            background: white;
+            margin: 40px 0;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+        
+        .section h2 {
+            font-size: 2.5rem;
+            color: #3b7adf;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(to right, #3b7adf, #00bf63);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+        
+        .audience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        .audience-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid #3b7adf;
+        }
+        
+        .audience-card:nth-child(even) {
+            border-left-color: #00bf63;
+        }
+        
+        .audience-card h3 {
+            color: #3b7adf;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .audience-card:nth-child(even) h3 {
+            color: #00bf63;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .benefit-item {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            padding: 25px;
+            border-radius: 12px;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .benefit-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 12px;
+            padding: 2px;
+            background: linear-gradient(135deg, #3b7adf, #00bf63);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: exclude;
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+        }
+        
+        .benefit-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(59, 122, 223, 0.2);
+        }
+        
+        .benefit-item h4 {
+            color: #3b7adf;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .conditions {
+            background: linear-gradient(135deg, #fff8e1 0%, #ffffff 100%);
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid #ff9800;
+            margin: 30px 0;
+        }
+        
+        .conditions h3 {
+            color: #e65100;
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+        }
+        
+        .conditions ul {
+            list-style: none;
+        }
+        
+        .conditions li {
+            margin: 10px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .conditions li::before {
+            content: '•';
+            color: #ff9800;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #3b7adf 0%, #00bf63 100%);
+            color: white;
+            padding: 60px;
+            text-align: center;
+            border-radius: 20px;
+            margin: 40px 0;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .cta-section h2::after {
+            background: white;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #3b7adf;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin: 20px 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            background: #f8f9fa;
+        }
+        
+        .geographic-coverage {
+            background: linear-gradient(135deg, #e3f2fd 0%, #ffffff 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .country-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .country-tag {
+            background: linear-gradient(135deg, #3b7adf, #00bf63);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .header p {
+                font-size: 1.1rem;
+            }
+            
+            .section {
+                padding: 30px 20px;
+            }
+            
+            .section h2 {
+                font-size: 2rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🐷🐔Smart Welfare News🐄</h1>
+            <p>Paquete de Patrocinios Profesional</p>
+        </div>
+
+        <!-- Estadísticas principales -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">5K+</div>
+                <div class="stat-label">Suscriptores Activos</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">35%</div>
+                <div class="stat-label">Tasa de Apertura</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">22</div>
+                <div class="stat-label">Estados de EE.UU.</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">38</div>
+                <div class="stat-label">Países Alcanzados</div>
+            </div>
+        </div>
+
+        <!-- Audiencia -->
+        <div class="section">
+            <h2>🎯 Nuestra Audiencia</h2>
+            <div class="audience-grid">
+                <div class="audience-card">
+                    <h3>🧠 Perfil Profesional</h3>
+                    <p>Veterinarios, productores, técnicos, investigadores, periodistas y tomadores de decisión especializados en bienestar animal y producción sostenible.</p>
+                </div>
+                <div class="audience-card">
+                    <h3>👩‍🎤 Demografía</h3>
+                    <p>Audiencia mayoritariamente femenina, altamente educada y comprometida con la innovación y sostenibilidad en el sector.</p>
+                </div>
+            </div>
+            
+            <div class="geographic-coverage">
+                <h3 style="color: #3b7adf; margin-bottom: 20px;">🌍 Cobertura Geográfica</h3>
+                <p style="margin-bottom: 20px;">Presencia destacada en mercados clave:</p>
+                <div class="country-tags">
+                    <span class="country-tag">🇪🇸 España</span>
+                    <span class="country-tag">🇺🇸 Estados Unidos</span>
+                    <span class="country-tag">🇨🇴 Colombia</span>
+                    <span class="country-tag">🇧🇷 Brasil</span>
+                    <span class="country-tag">🇦🇷 Argentina</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Por qué patrocinar -->
+        <div class="section">
+            <h2>💡 ¿Por qué Smart Welfare News?</h2>
+            <p style="font-size: 1.2rem; text-align: center; margin-bottom: 30px; color: #666;">
+                La primera newsletter en español centrada exclusivamente en <strong>bienestar animal en producción</strong>, 
+                con una voz técnica, cercana y comprometida.
+            </p>
+            
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <h4>✅ Comunidad Fiel</h4>
+                    <p>Profesionales reales y altamente segmentados en constante crecimiento.</p>
+                </div>
+                <div class="benefit-item">
+                    <h4>✅ Contenidos Rigurosos</h4>
+                    <p>Temas complejos abordados de forma accesible y con impacto real.</p>
+                </div>
+                <div class="benefit-item">
+                    <h4>✅ Visibilidad con Propósito</h4>
+                    <p>Alineada con sostenibilidad, salud pública y producción responsable.</p>
+                </div>
+                <div class="benefit-item">
+                    <h4>✅ Alianzas Personalizadas</h4>
+                    <p>Formatos adaptados: menciones, artículos patrocinados, enlaces y más.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Beneficios para la marca -->
+        <div class="section">
+            <h2>🚀 ¿Qué Gana Tu Marca?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <h4>👉 Posicionamiento Ético</h4>
+                    <p>Presencia en un entorno técnico y éticamente responsable.</p>
+                </div>
+                <div class="benefit-item">
+                    <h4>👉 Credibilidad Profesional</h4>
+                    <p>Reputación frente a una audiencia que busca soluciones reales, no slogans.</p>
+                </div>
+                <div class="benefit-item">
+                    <h4>👉 Nicho en Auge</h4>
+                    <p>Conexión directa con la producción animal sostenible del futuro.</p>
+                </div>
+                <div class="benefit-item">
+                    <h4>👉 Liderazgo con Impacto</h4>
+                    <p>Apoyo a la divulgación responsable y la innovación sectorial.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Condiciones -->
+        <div class="conditions">
+            <h3>📋 Condiciones del Patrocinio</h3>
+            <ul>
+                <li>Contenido alineado con valores editoriales de la newsletter</li>
+                <li>Material enviado por el cliente y adaptado por la editora con libertad creativa</li>
+                <li>Imágenes en formato JPG o PNG</li>
+                <li>Programación con mínimo 5 días hábiles de antelación</li>
+                <li>Métricas detalladas de apertura y clics post-envío</li>
+            </ul>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="cta-section">
+            <h2>🤝 ¡Conectemos!</h2>
+            <p style="font-size: 1.3rem; margin-bottom: 30px;">
+                Si tu empresa quiere liderar con impacto y apoyar la divulgación responsable, 
+                Smart Welfare News es el canal que estabas buscando.
+            </p>
+            <a href="mailto:smartwelfarenews@substack.com" class="cta-button">📩 Contactar Ahora</a>
+            <a href="https://smartwelfarenews.substack.com" class="cta-button">📨 Visitar Newsletter</a>
+        </div>
+    </div>
+</body>
+</html>
