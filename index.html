@@ -278,13 +278,130 @@
             margin: 20px 0;
         }
         
-        .country-tag {
-            background: linear-gradient(135deg, #3b7adf, #00bf63);
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .pricing-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            border: 2px solid transparent;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .pricing-card.premium {
+            border-color: #3b7adf;
+        }
+        
+        .pricing-card.premium-plus {
+            border-color: #3b7adf;
+            background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
+        }
+        
+        .pricing-card.standard {
+            border-color: #00bf63;
+        }
+        
+        .pricing-card.standard-plus {
+            border-color: #00bf63;
+            background: linear-gradient(135deg, #f8fff8 0%, #ffffff 100%);
+        }
+        
+        .pricing-card.basic {
+            border-color: #6c757d;
+        }
+        
+        .pricing-card.basic-plus {
+            border-color: #6c757d;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+        }
+        
+        .pricing-card.exclusive {
+            border-color: #ff6b35;
+            background: linear-gradient(135deg, #fff8f5 0%, #ffffff 100%);
+            border-width: 3px;
+        }
+        
+        .position-badge {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: #3b7adf;
             color: white;
-            padding: 8px 16px;
+            padding: 5px 15px;
             border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 500;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .pricing-card.standard .position-badge {
+            background: #00bf63;
+        }
+        
+        .pricing-card.basic .position-badge {
+            background: #6c757d;
+        }
+        
+        .exclusive-badge {
+            background: #ff6b35 !important;
+        }
+        
+        .pricing-card h3 {
+            color: #333;
+            font-size: 1.3rem;
+            margin: 20px 0 15px 0;
+            text-align: center;
+        }
+        
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin: 20px 0;
+            color: #3b7adf;
+        }
+        
+        .pricing-card.standard .price {
+            color: #00bf63;
+        }
+        
+        .pricing-card.basic .price {
+            color: #6c757d;
+        }
+        
+        .pricing-card.exclusive .price {
+            color: #ff6b35;
+        }
+        
+        .features {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        
+        .features li {
+            padding: 8px 0;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #00bf63;
+            font-weight: bold;
         }
         
         @media (max-width: 768px) {
@@ -314,7 +431,7 @@
     <div class="container">
         <!-- Header -->
         <div class="header">
-            <h1>🐷🐔Smart Welfare News🐄</h1>
+            <h1>🐷🐔🐄 Smart Welfare News</h1>
             <p>Paquete de Patrocinios Profesional</p>
         </div>
 
@@ -412,6 +529,90 @@
                 <div class="benefit-item">
                     <h4>👉 Liderazgo con Impacto</h4>
                     <p>Apoyo a la divulgación responsable y la innovación sectorial.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Paquetes y Precios -->
+        <div class="section">
+            <h2>💰 Paquetes de Patrocinio</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card premium">
+                    <div class="position-badge">Parte Superior (A)</div>
+                    <h3>Texto + Enlace</h3>
+                    <div class="price">200€</div>
+                    <ul class="features">
+                        <li>1 párrafo (máx. 500 caracteres)</li>
+                        <li>Enlace incluido</li>
+                        <li>Posición premium</li>
+                    </ul>
+                </div>
+                
+                <div class="pricing-card premium-plus">
+                    <div class="position-badge">Parte Superior (A)</div>
+                    <h3>Texto + Imagen + Enlace</h3>
+                    <div class="price">280€</div>
+                    <ul class="features">
+                        <li>1 párrafo + enlace</li>
+                        <li>1 imagen (600x400 px)</li>
+                        <li>Máximo impacto visual</li>
+                    </ul>
+                </div>
+                
+                <div class="pricing-card standard">
+                    <div class="position-badge">Parte Media (B)</div>
+                    <h3>Texto + Enlace</h3>
+                    <div class="price">150€</div>
+                    <ul class="features">
+                        <li>1 párrafo + enlace</li>
+                        <li>Posición intermedia</li>
+                        <li>Excelente visibilidad</li>
+                    </ul>
+                </div>
+                
+                <div class="pricing-card standard-plus">
+                    <div class="position-badge">Parte Media (B)</div>
+                    <h3>Texto + Imagen + Enlace</h3>
+                    <div class="price">220€</div>
+                    <ul class="features">
+                        <li>1 párrafo + enlace</li>
+                        <li>1 imagen incluida</li>
+                        <li>Balance perfecto</li>
+                    </ul>
+                </div>
+                
+                <div class="pricing-card basic">
+                    <div class="position-badge">Parte Inferior (C)</div>
+                    <h3>Texto + Enlace</h3>
+                    <div class="price">100€</div>
+                    <ul class="features">
+                        <li>1 párrafo + enlace</li>
+                        <li>Opción económica</li>
+                        <li>Acceso al mercado</li>
+                    </ul>
+                </div>
+                
+                <div class="pricing-card basic-plus">
+                    <div class="position-badge">Parte Inferior (C)</div>
+                    <h3>Texto + Imagen + Enlace</h3>
+                    <div class="price">160€</div>
+                    <ul class="features">
+                        <li>1 párrafo + enlace</li>
+                        <li>1 imagen incluida</li>
+                        <li>Valor agregado</li>
+                    </ul>
+                </div>
+                
+                <div class="pricing-card exclusive">
+                    <div class="position-badge exclusive-badge">Newsletter Dedicada (D)</div>
+                    <h3>Contenido Exclusivo</h3>
+                    <div class="price">desde 450€</div>
+                    <ul class="features">
+                        <li>100% sobre tu marca</li>
+                        <li>Contenido personalizado</li>
+                        <li>Máximo alcance</li>
+                        <li>A consultar</li>
+                    </ul>
                 </div>
             </div>
         </div>
